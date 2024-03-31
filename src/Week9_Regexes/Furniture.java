@@ -11,14 +11,14 @@ public class Furniture {
         String input = scanner.nextLine();
         String regex = ">>(?<product>[A-Z][a-zA-Z]*)<<(?<price>\\d+(\\.\\d+)?)!(?<quantity>\\d+)";
         Pattern pattern = Pattern.compile(regex);
-        Double totalMoneySpent = 0.0;
+        double totalMoneySpent = 0;
         List<String> boughtFurniture = new ArrayList<>();
 
         while (!input.equals("Purchase")) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.find()) {
                 String product = matcher.group("product");
-                Double price = Double.parseDouble(matcher.group("price"));
+                double price = Double.parseDouble(matcher.group("price"));
                 int quantity = Integer.parseInt(matcher.group("quantity"));
                 totalMoneySpent += price * quantity;
                 boughtFurniture.add(product);

@@ -1,0 +1,27 @@
+package ExamPrep1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Problem2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String allDestinations = scanner.nextLine();
+        String regex = "";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(allDestinations);
+        List<String> validDestinations = new ArrayList<>();
+        while (matcher.find()){
+            validDestinations.add(matcher.group());
+        }
+        System.out.printf("Destinations: " + String.join(", ", validDestinations));
+        int travelPoints = 0;
+        for (String validDestination : validDestinations) {
+            travelPoints += validDestination.length();
+        }
+        System.out.printf("Travel Points: "+ travelPoints);
+    }
+}
